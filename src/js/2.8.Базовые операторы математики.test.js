@@ -1,3 +1,5 @@
+import correctPromptInTaskFour from "./2.8.Базовые операторы математики.js";
+
 describe("2.8.Базовые операторы математики.test", () => {
   test("Задание 1", () => {
     let a = 1,
@@ -5,21 +7,21 @@ describe("2.8.Базовые операторы математики.test", () =
     let c = ++a;
     let d = b++;
 
-    expect(a).toBe(2)
-    expect(b).toBe(2)
-    expect(c).toBe(2)
-    expect(d).toBe(1)
+    expect(a).toBe(2);
+    expect(b).toBe(2);
+    expect(c).toBe(2);
+    expect(d).toBe(1);
   });
-  
-  test("Задание 2", ()=>{
+
+  test("Задание 2", () => {
     let a = 2;
     let x = 1 + (a *= 2);
 
-    expect(a).toBe(4)
-    expect(x).toBe(5)
-  })
+    expect(a).toBe(4);
+    expect(x).toBe(5);
+  });
 
-  test("Задание 3", ()=>{
+  test("Задание 3", () => {
     expect("" + 1 + 0).toBe("10");
     expect("" - 1 + 0).toBe(-1);
     expect(true + false).toBe(1);
@@ -34,5 +36,12 @@ describe("2.8.Базовые операторы математики.test", () =
     expect(null + 1).toBe(1);
     expect(undefined + 1).toBe(NaN);
     expect(" \t \n" - 2).toBe(-2);
-  })
+  });
+
+  test("Задание 4", () => {
+    jest.spyOn(window, "prompt").mockImplementation(() => "7");
+    window.alert = jest.fn();
+    correctPromptInTaskFour();
+    expect(window.alert).toHaveBeenCalledWith(14);
+  });
 });
