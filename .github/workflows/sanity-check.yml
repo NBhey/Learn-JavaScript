@@ -1,8 +1,9 @@
 name: PR Sanity Check
 
-on: 
-  branches:
-    - master
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   lint:
@@ -14,7 +15,6 @@ jobs:
       - name: Install Packages
         run: |
           npm install
-
 
       - name: Test check
         run: |
