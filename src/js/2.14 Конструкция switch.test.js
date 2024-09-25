@@ -54,4 +54,6 @@ describe("2.14 Конструкция switch", () => {
 
     expect(window.alert).toHaveBeenCalledWith("Вы ввели число 2, а может и 3");
   });
+
+  
 });
