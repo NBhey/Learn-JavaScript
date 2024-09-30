@@ -1,6 +1,8 @@
 describe("2.15 Функции", () => {
-  global.confirm = () => false;
-
+  beforeEach(() => {
+    window.confirm = () => false;
+  });
+  
   test("Задание 1, обязателен ли else", () => {
     function checkAge(age) {
       if (age > 18) {
@@ -34,21 +36,21 @@ describe("2.15 Функции", () => {
     expect(checkAge2(20)).toBeTruthy();
   });
 
-  test('Задание 3, Функция min(a, b)', () => {
-    function min(a, b){
-        return (a < b) ? a : b
+  test("Задание 3, Функция min(a, b)", () => {
+    function min(a, b) {
+      return a < b ? a : b;
     }
-    expect(min(2, 5)).toBe(2)
-    expect(min(3, -1)).toBe(-1)
-    expect(min(1, 1)).toBe(1)
-  })
+    expect(min(2, 5)).toBe(2);
+    expect(min(3, -1)).toBe(-1);
+    expect(min(1, 1)).toBe(1);
+  });
 
-  test('Задание 4, Функция pow(x,n)', () => {
-    function pow(a, b){
-        return a ** b
+  test("Задание 4, Функция pow(x,n)", () => {
+    function pow(a, b) {
+      return a ** b;
     }
-    expect(pow(3, 2)).toBe(9)
-    expect(pow(3, 3)).toBe(27)
-    expect(pow(1, 100)).toBe(1)
-  })
+    expect(pow(3, 2)).toBe(9);
+    expect(pow(3, 3)).toBe(27);
+    expect(pow(1, 100)).toBe(1);
+  });
 });
