@@ -27,8 +27,30 @@ describe("4.4 Методы объекта", () => {
         return this.a * this.b;
       },
     };
-    calculator.read()
+    calculator.read();
     expect(calculator.sum()).toBe(10);
     expect(calculator.mul()).toBe(24);
+  });
+
+  test("Задание 3, Цепь вызовов", () => {
+    window.alert = jest.fn();
+    let ladder = {
+      step: 0,
+      up() {
+        this.step++;
+        return this 
+      },
+      down() {
+        this.step--;
+        return this
+      },
+      showStep: function() { // показывает текущую ступеньку
+        alert( this.step );
+        return this
+      }
+    };
+    ladder.up().up().down().showStep().down().showStep()
+    expect(window.alert).toHaveBeenCalledWith(1)
+    expect(window.alert).toHaveBeenCalledWith(0)
   });
 });
