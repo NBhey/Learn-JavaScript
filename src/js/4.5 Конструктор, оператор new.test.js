@@ -18,7 +18,7 @@ describe('4.5 Конструктор, оператор "new"', () => {
         this.read = function(){
           jest.spyOn(window, "prompt").mockImplementation(()=>4)
           this.num1 = +prompt('Введите число');
-          jest.spyOn(window, "prompt").mockImplementation(()=>4)
+          jest.spyOn(window, "prompt").mockImplementation(()=>5)
           this.num2 = +prompt('Введите число');
         },
         this.sum = function(){
@@ -30,7 +30,23 @@ describe('4.5 Конструктор, оператор "new"', () => {
     }
     let calculator = new Calculator();
     calculator.read();
-    expect(calculator.sum()).toBe(8)
-    expect(calculator.mul()).toBe(16)
+    expect(calculator.sum()).toBe(9)
+    expect(calculator.mul()).toBe(20)
+  });
+
+  test('Задание 3, Создайте new Accumulator',()=>{
+    function Accumulator(startingValue){
+      this.value = startingValue;
+
+      this.read = function(){
+        jest.spyOn(window, "prompt").mockImplementation(()=>2)
+        this.num1 = +prompt('Введите число');
+        this.value += this.num1
+      }
+    }
+    let accumulator = new Accumulator(1);
+    accumulator.read();
+    accumulator.read();
+    expect(accumulator.value).toBe(5)
   })
 });
