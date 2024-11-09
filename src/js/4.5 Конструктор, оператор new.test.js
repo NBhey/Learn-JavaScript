@@ -44,9 +44,9 @@ describe('4.5 Конструктор, оператор "new"', () => {
         this.value += this.num1
       }
     }
-    let accumulator = new Accumulator(1);
+    let accumulator = new Accumulator(10);
     accumulator.read();
     accumulator.read();
-    expect(accumulator.value).toBe(5)
+    expect(accumulator.value).toBe(14)
   })
 });
