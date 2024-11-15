@@ -34,4 +34,12 @@ describe("5.3 Строки", () => {
     arr[2]();
     expect(logSpy).toHaveBeenCalledWith(arr);
   });
+
+  test.skip("Задание 5, Подмассив наибольшей суммы", () => {
+    function getMaxSubSum(arr) {
+    
+
+    }
+   
+  });
 });
