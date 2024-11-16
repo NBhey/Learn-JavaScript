@@ -35,11 +35,38 @@ describe("5.3 Строки", () => {
     expect(logSpy).toHaveBeenCalledWith(arr);
   });
 
-  test.skip("Задание 5, Подмассив наибольшей суммы", () => {
+  test("Задание 5, Подмассив наибольшей суммы", () => {
     function getMaxSubSum(arr) {
-    
-
+      let resultSum = 0;
+      for (let i = 0; i < arr.length; i += 1) {
+        let sum = 0;
+        for (let j = i; j < arr.length; j += 1) {
+          sum += arr[j];
+          resultSum = Math.max(resultSum,sum);
+        }
+      }
+      return resultSum
     }
-   
+    expect(getMaxSubSum([-1, 2, 3, -9])).toBe(5)
+    expect(getMaxSubSum([1,-2,3,4,-9,6])).toBe(7)
+    expect(getMaxSubSum([-1, 2, 3, -9, 11])).toBe(11)
+    expect(getMaxSubSum([1, 2, 3])).toBe(6)
+    expect(getMaxSubSum([100, -9, 2, -3, 5])).toBe(100)
+
+    function getMaxSubSum2(arr) {
+      let sum = 0;
+      let resultSum = 0;
+     for (let item of arr){
+      sum += item;
+      resultSum = Math.max(resultSum,sum)
+      if(sum < 0) sum = 0;
+     }
+      return resultSum
+    }
+    expect(getMaxSubSum2([-1, 2, 3, -9])).toBe(5)
+    expect(getMaxSubSum2([1,-2,3,4,-9,6])).toBe(7)
+    expect(getMaxSubSum2([-1, 2, 3, -9, 11])).toBe(11)
+    expect(getMaxSubSum2([1, 2, 3])).toBe(6)
+    expect(getMaxSubSum2([100, -9, 2, -3, 5])).toBe(100)
   });
 });
