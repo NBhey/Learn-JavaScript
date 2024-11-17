@@ -30,4 +30,18 @@ describe("5.5 Методы массивов", () => {
     expect(filterRange([5,3,8,1],1,4)).toEqual([3,1])
     expect(filterRange([1,2,3,4,6,7,9],3,8)).toEqual([3,4,6,7])
   });
+
+  test("Задание 3, фильтрация по диапазону 'на месте'", ()=>{
+    let arr = [5, 3, 8, 1];
+    function filterRangeInPlace(arr,a,b){
+      for(let i = 0; i < arr.length; i += 1){
+        if (arr[i] < a || arr[i] > b){
+          arr.splice(i,1)
+          i--
+        }
+      }
+    }
+    filterRangeInPlace(arr, 1, 4)
+    expect(arr).toEqual([3, 1])
+  })
 });
