@@ -44,4 +44,10 @@ describe("5.5 Методы массивов", () => {
     filterRangeInPlace(arr, 1, 4)
     expect(arr).toEqual([3, 1])
   })
+
+  test("Задание 4, Сортировать в порядке по убыванию", ()=>{
+    let arr = [5, 2, 1, -10, 8];
+    arr.sort((a, b) => b - a);
+    expect(arr).toEqual([8, 5, 2, 1, -10])
+  })
 });
