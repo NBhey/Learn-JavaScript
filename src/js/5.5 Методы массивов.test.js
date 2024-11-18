@@ -50,4 +50,12 @@ describe("5.5 Методы массивов", () => {
     arr.sort((a, b) => b - a);
     expect(arr).toEqual([8, 5, 2, 1, -10])
   })
+
+  test("Задание 5, Скопировать и отсортировать массив", ()=>{
+    let arr = ["HTML", "JavaScript", "CSS"];
+
+    let sorted = arr.slice().sort();
+    expect(arr).toEqual(["HTML", "JavaScript", "CSS"]);
+    expect(sorted).toEqual([ "CSS", "HTML", "JavaScript"]);
+  })
 });
