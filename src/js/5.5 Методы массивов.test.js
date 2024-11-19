@@ -61,10 +61,22 @@ describe("5.5 Методы массивов", () => {
 
   test("Задание 6, Создать расширяемый калькулятор", ()=>{
     function Calculator(){
-      calculate = function(str){
-        let arr = str.split(' ')
-        return arr[1] == '+' ? Number(arr[0]) + Number(arr[2]) : Number(arr[0]) - Number(arr[2])
+
+      this.methods = {
+        '+':(a,b) => a + b,
+        '-':(a,b) => a - b,
+      }
+
+      this.calculate = function(str){
+        let arr = str.split(' '),
+            a = Number(arr[0]),
+            operator = arr[1],
+            b = Number(arr[2])
+        return this.methods[operator](a,b)
       }
     }
+    let checkFunc = new Calculator;
+    expect(checkFunc.calculate('5 + 7')).toBe(12)
+    expect(checkFunc.calculate('3 + 7')).toBe(10)
   })
 });
