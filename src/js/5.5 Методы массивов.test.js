@@ -97,9 +97,30 @@ describe("5.5 Методы массивов", () => {
     let petya = { name: "Петя", age: 30 };
     let masha = { name: "Маша", age: 28 };
 
-    let users = [ vasya, petya, masha ];
+    let users = [vasya, petya, masha];
 
-    let names = users.map((el) => el.name)
-    expect(names).toEqual(["Вася","Петя","Маша"])
+    let names = users.map((el) => el.name);
+    expect(names).toEqual(["Вася", "Петя", "Маша"]);
+  });
+
+  test("Задание 8, трансформировать в объекты", () => {
+    let vasya = { name: "Вася", surname: "Пупкин", id: 1 };
+    let petya = { name: "Петя", surname: "Иванов", id: 2 };
+    let masha = { name: "Маша", surname: "Петрова", id: 3 };
+
+    let users = [vasya, petya, masha];
+
+    let usersMapped  = users.map((el) => {
+      return { fullName: `${el.name} ${el.surname}`, id: el.id };
+    });
+
+    expect(usersMapped ).toEqual([
+      { fullName: "Вася Пупкин", id: 1 },
+      { fullName: "Петя Иванов", id: 2 },
+      { fullName: "Маша Петрова", id: 3 },
+    ]);
+
+    expect(usersMapped[0].id).toBe(1);
+    expect(usersMapped[0].fullName ).toBe('Вася Пупкин');
   });
 });
