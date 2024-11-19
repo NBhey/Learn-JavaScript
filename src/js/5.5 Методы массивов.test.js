@@ -26,36 +26,45 @@ describe("5.5 Методы массивов", () => {
   });
 
   test("Задание 2, фильтрация по диапазону", () => {
-    const filterRange = (arr, a, b) => arr.filter((el)=> el >= a && el <= b ? el : false);
-    expect(filterRange([5,3,8,1],1,4)).toEqual([3,1])
-    expect(filterRange([1,2,3,4,6,7,9],3,8)).toEqual([3,4,6,7])
+    const filterRange = (arr, a, b) =>
+      arr.filter((el) => (el >= a && el <= b ? el : false));
+    expect(filterRange([5, 3, 8, 1], 1, 4)).toEqual([3, 1]);
+    expect(filterRange([1, 2, 3, 4, 6, 7, 9], 3, 8)).toEqual([3, 4, 6, 7]);
   });
 
-  test("Задание 3, фильтрация по диапазону 'на месте'", ()=>{
+  test("Задание 3, фильтрация по диапазону 'на месте'", () => {
     let arr = [5, 3, 8, 1];
-    function filterRangeInPlace(arr,a,b){
-      for(let i = 0; i < arr.length; i += 1){
-        if (arr[i] < a || arr[i] > b){
-          arr.splice(i,1)
-          i--
+    function filterRangeInPlace(arr, a, b) {
+      for (let i = 0; i < arr.length; i += 1) {
+        if (arr[i] < a || arr[i] > b) {
+          arr.splice(i, 1);
+          i--;
         }
       }
     }
-    filterRangeInPlace(arr, 1, 4)
-    expect(arr).toEqual([3, 1])
-  })
+    filterRangeInPlace(arr, 1, 4);
+    expect(arr).toEqual([3, 1]);
+  });
 
-  test("Задание 4, Сортировать в порядке по убыванию", ()=>{
+  test("Задание 4, Сортировать в порядке по убыванию", () => {
     let arr = [5, 2, 1, -10, 8];
     arr.sort((a, b) => b - a);
-    expect(arr).toEqual([8, 5, 2, 1, -10])
-  })
+    expect(arr).toEqual([8, 5, 2, 1, -10]);
+  });
 
-  test("Задание 5, Скопировать и отсортировать массив", ()=>{
+  test("Задание 5, Скопировать и отсортировать массив", () => {
     let arr = ["HTML", "JavaScript", "CSS"];
-
     let sorted = arr.slice().sort();
     expect(arr).toEqual(["HTML", "JavaScript", "CSS"]);
-    expect(sorted).toEqual([ "CSS", "HTML", "JavaScript"]);
+    expect(sorted).toEqual(["CSS", "HTML", "JavaScript"]);
+  });
+
+  test("Задание 6, Создать расширяемый калькулятор", ()=>{
+    function Calculator(){
+      calculate = function(str){
+        let arr = str.split(' ')
+        return arr[1] == '+' ? Number(arr[0]) + Number(arr[2]) : Number(arr[0]) - Number(arr[2])
+      }
+    }
   })
 });
