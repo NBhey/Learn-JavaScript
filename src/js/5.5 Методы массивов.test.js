@@ -59,24 +59,36 @@ describe("5.5 Методы массивов", () => {
     expect(sorted).toEqual(["CSS", "HTML", "JavaScript"]);
   });
 
-  test("Задание 6, Создать расширяемый калькулятор", ()=>{
-    function Calculator(){
-
+  test("Задание 6, Создать расширяемый калькулятор", () => {
+    function Calculator() {
       this.methods = {
-        '+':(a,b) => a + b,
-        '-':(a,b) => a - b,
-      }
+        "+": (a, b) => a + b,
+        "-": (a, b) => a - b,
+      };
 
-      this.calculate = function(str){
-        let arr = str.split(' '),
-            a = Number(arr[0]),
-            operator = arr[1],
-            b = Number(arr[2])
-        return this.methods[operator](a,b)
-      }
+      this.calculate = function (str) {
+        let arr = str.split(" "),
+          a = Number(arr[0]),
+          operator = arr[1],
+          b = Number(arr[2]);
+        return this.methods[operator](a, b);
+      };
+
+      this.addMethod = function (str, func) {
+        this.methods[str] = func;
+      };
     }
-    let checkFunc = new Calculator;
-    expect(checkFunc.calculate('5 + 7')).toBe(12)
-    expect(checkFunc.calculate('3 + 7')).toBe(10)
-  })
+    let checkFunc = new Calculator();
+    expect(checkFunc.calculate("5 + 7")).toBe(12);
+    expect(checkFunc.calculate("3 + 7")).toBe(10);
+
+    let powerCalc = new Calculator();
+    powerCalc.addMethod("*", (a, b) => a * b);
+    powerCalc.addMethod("/", (a, b) => a / b);
+    powerCalc.addMethod("**", (a, b) => a ** b);
+
+    expect(powerCalc.calculate("5 * 3")).toBe(15);
+    expect(powerCalc.calculate("5 / 5")).toBe(1);
+    expect(powerCalc.calculate("5 ** 3")).toBe(125);
+  });
 });
