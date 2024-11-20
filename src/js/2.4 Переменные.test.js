@@ -1,4 +1,4 @@
-import variables from './2.4.Переменные.js'
+import variables from './2.4 Переменные.js'
 
 describe('2.4 Переменные', () => {
     test('is a function', () => {

@@ -1,4 +1,4 @@
-import input from "./2.6.Взаимодействие alert,pompt,confirm.js";
+import input from "./2.6 Взаимодействие alert,pompt,confirm.js";
 
 describe('2.6.Взаимодействие alert,pompt,confirm', () => {
     test('is a function', () => {

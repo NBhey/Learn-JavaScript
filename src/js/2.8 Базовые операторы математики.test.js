@@ -1,4 +1,4 @@
-import correctPromptInTaskFour from "./2.8.Базовые операторы математики.js";
+import correctPromptInTaskFour from "./2.8 Базовые операторы математики.js";
 
 describe("2.8.Базовые операторы математики.test", () => {
   test("Задание 1", () => {
