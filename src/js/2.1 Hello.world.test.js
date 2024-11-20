@@ -1,5 +1,5 @@
 
-import firstStep from './2.1Hello.world.js'
+import firstStep from './2.1 Hello.world.js'
 
 describe('2.1 Привет мир', () => {
     test('is a function', () => {
