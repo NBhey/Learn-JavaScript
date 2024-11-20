@@ -110,17 +110,33 @@ describe("5.5 Методы массивов", () => {
 
     let users = [vasya, petya, masha];
 
-    let usersMapped  = users.map((el) => {
+    let usersMapped = users.map((el) => {
       return { fullName: `${el.name} ${el.surname}`, id: el.id };
     });
 
-    expect(usersMapped ).toEqual([
+    expect(usersMapped).toEqual([
       { fullName: "Вася Пупкин", id: 1 },
       { fullName: "Петя Иванов", id: 2 },
       { fullName: "Маша Петрова", id: 3 },
     ]);
 
     expect(usersMapped[0].id).toBe(1);
-    expect(usersMapped[0].fullName ).toBe('Вася Пупкин');
+    expect(usersMapped[0].fullName).toBe("Вася Пупкин");
+  });
+
+  test("Задание 9, отсортировать пользователей по возрасту", () => {
+    let vasya = { name: "Вася", age: 25 };
+    let petya = { name: "Петя", age: 30 };
+    let masha = { name: "Маша", age: 28 };
+
+    let arr = [vasya, petya, masha];
+    function sortByAge(arr){
+      return arr.sort((a,b) => a.age - b.age)
+    }
+    expect(sortByAge(arr)).toEqual([
+      { name: "Вася", age: 25 },
+      { name: "Маша", age: 28 },
+      { name: "Петя", age: 30 }
+    ]);
   });
 });
