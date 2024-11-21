@@ -130,23 +130,41 @@ describe("5.5 Методы массивов", () => {
     let masha = { name: "Маша", age: 28 };
 
     let arr = [vasya, petya, masha];
-    function sortByAge(arr){
-      return arr.sort((a,b) => a.age - b.age)
+    function sortByAge(arr) {
+      return arr.sort((a, b) => a.age - b.age);
     }
     expect(sortByAge(arr)).toEqual([
       { name: "Вася", age: 25 },
       { name: "Маша", age: 28 },
-      { name: "Петя", age: 30 }
+      { name: "Петя", age: 30 },
     ]);
   });
 
-  test("Задание 10, перемешайте массив", ()=>{
+  test("Задание 10, перемешайте массив", () => {
     let arr = [1, 2, 3];
 
-    let shuffle = function(array){array.sort(()=>Math.floor(Math.random() - 0.5))}
-    
+    let shuffle = function (array) {
+      array.sort(() => Math.floor(Math.random() - 0.5));
+    };
+
     shuffle = jest.fn();
-    shuffle.mockReturnValueOnce([2,1,3])
-    expect(shuffle(arr)).toEqual([2,1,3])
-  })
+    shuffle.mockReturnValueOnce([2, 1, 3]);
+    expect(shuffle(arr)).toEqual([2, 1, 3]);
+  });
+
+  test("Задание 11, получтиь срединй возраст", () => {
+    let vasya = { name: "Вася", age: 25 };
+    let petya = { name: "Петя", age: 30 };
+    let masha = { name: "Маша", age: 29 };
+
+    let arr = [vasya, petya, masha];
+    
+    const getAverageAge = (arr) => {
+      let sum = 0;
+      arr.map((el) => (sum += el.age));
+      return sum / arr.length
+    };
+
+    expect(getAverageAge(arr)).toBe(28)
+  });
 });
