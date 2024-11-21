@@ -139,4 +139,14 @@ describe("5.5 Методы массивов", () => {
       { name: "Петя", age: 30 }
     ]);
   });
+
+  test("Задание 10, перемешайте массив", ()=>{
+    let arr = [1, 2, 3];
+
+    let shuffle = function(array){array.sort(()=>Math.floor(Math.random() - 0.5))}
+    
+    shuffle = jest.fn();
+    shuffle.mockReturnValueOnce([2,1,3])
+    expect(shuffle(arr)).toEqual([2,1,3])
+  })
 });
