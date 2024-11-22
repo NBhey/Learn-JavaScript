@@ -158,13 +158,37 @@ describe("5.5 Методы массивов", () => {
     let masha = { name: "Маша", age: 29 };
 
     let arr = [vasya, petya, masha];
-    
+
     const getAverageAge = (arr) => {
       let sum = 0;
       arr.map((el) => (sum += el.age));
-      return sum / arr.length
+      return sum / arr.length;
     };
 
-    expect(getAverageAge(arr)).toBe(28)
+    expect(getAverageAge(arr)).toBe(28);
+  });
+
+  test("Задание 12, оставить уникальные элементы массива", () => {
+    function unique(arr) {
+      let newArr = [];
+      arr.map((el) => {
+        if (!newArr.includes(el)) {
+          newArr.push(el);
+        }
+      });
+      return newArr;
+    }
+    let strings = [
+      "кришна",
+      "кришна",
+      "харе",
+      "харе",
+      "харе",
+      "харе",
+      "кришна",
+      "кришна",
+      ":-O",
+    ];
+    expect(unique(strings)).toEqual(["кришна", "харе", ":-O"]);
   });
 });
