@@ -191,4 +191,28 @@ describe("5.5 Методы массивов", () => {
     ];
     expect(unique(strings)).toEqual(["кришна", "харе", ":-O"]);
   });
+
+  test("Задание 13, создайте объект с ключами из массива", () => {
+    let users = [
+      { id: "john", name: "John Smith", age: 20 },
+      { id: "ann", name: "Ann Smith", age: 24 },
+      { id: "pete", name: "Pete Peterson", age: 31 },
+    ];
+
+    function groupById(arr) {
+      return arr.reduce((acc, el) => {
+        acc[el.id] = el;
+        return acc;
+      }, {});
+    }
+
+    let usersById = groupById(users);
+    expect(usersById).toEqual[
+      {
+        ann: { id: "ann", name: "Ann Smith", age: 24 },
+        john: { id: "john", name: "John Smith", age: 20 },
+        pete: { id: "pete", name: "Pete Peterson", age: 31 },
+      }
+    ];
+  });
 });
