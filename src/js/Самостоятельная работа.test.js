@@ -310,4 +310,5 @@ describe("Самостоятельная работа", () => {
     expect(getUsersNamesInAgeRange([], "женский")).toBe(0)
     expect(getUsersNamesInAgeRange(people, "инопланетянин")).toBe(0)
   });
+  
 });
