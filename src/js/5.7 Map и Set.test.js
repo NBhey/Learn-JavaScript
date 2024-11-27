@@ -28,16 +28,31 @@ describe("5.7 Map и Set", () => {
     expect(unique2(values)).toEqual(["Hare", "Krishna", ":-O"]);
   });
 
-  test('Задание 2, отфильтруйте анаграммы', ()=>{
-    function aclean(arr){
-      let map = new Map()
-      for (let word of arr){
-        let sort = word.toLocaleLowerCase().split('').sort().join("")
-        map.set(sort,word)
+  test("Задание 2, отфильтруйте анаграммы", () => {
+    function aclean(arr) {
+      let map = new Map();
+      for (let word of arr) {
+        let sort = word.toLocaleLowerCase().split("").sort().join("");
+        map.set(sort, word);
       }
-      return Array.from(map.values())
+      return Array.from(map.values());
     }
 
-    expect(aclean(["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"])).toEqual(['PAN', 'hectares', 'era'])
-  })
+    expect(
+      aclean(["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"])
+    ).toEqual(["PAN", "hectares", "era"]);
+  });
+
+  test("Задание 3, перебираемые ключи", () => {
+    //     Мы хотели бы получить массив ключей map.keys() в переменную и далее работать с ними, например, применить метод .push.
+    // Но это не выходит:
+    let map = new Map();
+    map.set("name", "John");
+
+    let keys = Array.from(map.keys());
+    keys.push("more");
+    expect(keys).toEqual(["name", "more"]);
+    keys.push("more", "and more");
+    expect(keys).toEqual(["name", "more","more", "and more"]);
+  });
 });
