@@ -1,4 +1,4 @@
-describe("5.7 Map и Set", () => {
+describe("5.8 WeaMap и WeakSet", () => {
   test('Задача 1, хранение отметок "не прочитано"', () => {
     let messages = [
       { text: "Hello", from: "John" },
