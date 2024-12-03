@@ -305,10 +305,22 @@ describe("Самостоятельная работа", () => {
         .map((el) => (sum = el.age + sum));
       return sum / result.length;
     }
-    expect(getUsersNamesInAgeRange(people, "мужской")).toBe(32)
-    expect(getUsersNamesInAgeRange(people, "женский")).toBe(27.4)
-    expect(getUsersNamesInAgeRange([], "женский")).toBe(0)
-    expect(getUsersNamesInAgeRange(people, "инопланетянин")).toBe(0)
+    expect(getUsersNamesInAgeRange(people, "мужской")).toBe(32);
+    expect(getUsersNamesInAgeRange(people, "женский")).toBe(27.4);
+    expect(getUsersNamesInAgeRange([], "женский")).toBe(0);
+    expect(getUsersNamesInAgeRange(people, "инопланетянин")).toBe(0);
   });
-  
+
+  test("Сумма свойств объекта", () => {
+    let salaries = {
+      John: 100,
+      Pete: 300,
+      Mary: 250,
+    };
+
+    const sumSalaries = (obj) =>
+      Object.values(obj).reduce((acc, el) => (acc += el), 0);
+
+    expect(sumSalaries(salaries)).toBe(650);
+  });
 });
