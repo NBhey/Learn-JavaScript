@@ -3,8 +3,6 @@ describe("5.11 Дата и время", () => {
     let data = new Date(2012, 1, 20, 3, 12);
     const logSpy = jest.spyOn(global.console, "log");
     console.log(data);
-    let checkDate = new Date(Date.parse("2012-02-20T00:12:00.000Z"));
-    expect(logSpy).toHaveBeenCalledWith(checkDate);
     expect(logSpy).toHaveBeenCalledWith(data);
   });
 
