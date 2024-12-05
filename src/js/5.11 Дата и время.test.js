@@ -3,7 +3,8 @@ describe("5.10 Деструктурирующее присваивание", () 
     let data = new Date(2012, 1, 20, 3, 12);
     const logSpy = jest.spyOn(global.console, "log");
     console.log(data);
-    // expect(logSpy).toHaveBeenCalledWith(new Date(Date.parse("2012-02-20T00:12:00.000Z")));
+    let checkDate = new Date(Date.parse("2012-02-20T00:12:00.000Z"))
+    expect(logSpy).toHaveBeenCalledWith(checkDate);
     expect(logSpy).toHaveBeenCalledWith(data);
 
   });
