@@ -1,4 +1,4 @@
-describe("5.10 Деструктурирующее присваивание", () => {
+describe("5.11 Дата и время", () => {
   test("Задание 1, Создайте объект Date для даты: 20 февраля 2012 года, 3 часа 12 минут. Временная зона – местная.", () => {
     let data = new Date(2012, 1, 20, 3, 12);
     const logSpy = jest.spyOn(global.console, "log");
@@ -21,5 +21,17 @@ describe("5.10 Деструктурирующее присваивание", () 
     expect(getWeekDay(date)).toBe("ВТ");
     expect(getWeekDay(date2)).toBe("ЧТ");
     expect(getWeekDay(date3)).toBe("СР");
+  });
+
+
+  test("Задание 3, День недели в европейской нумерации", () => {
+    let date = new Date(2012, 0, 3);
+    function getLocalDay(date){
+      date = date.getDay()
+      return date === 0 ? 7 : date
+    }
+    expect(getLocalDay(date)).toBe(2)
+    expect(getLocalDay(new Date(2024, 11, 8))).toBe(7)
+    expect(getLocalDay(new Date(2024, 11, 5))).toBe(4)
   });
 });
