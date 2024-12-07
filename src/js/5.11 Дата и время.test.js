@@ -63,4 +63,14 @@ describe("5.11 Дата и время", () => {
 
     expect(getSecondsToday(new Date(2024, 11, 7, 15))).toBe(54000);
   });
+
+
+  test("Задание 7, сколько секунд осталось до завтра", () => {
+    let date = new Date(2024, 11, 7, 23);
+    
+    const getSecondsTomorow = (date) => 24*3600 - (date.getHours() * 3600 + date.getMinutes() * 60 + date.getSeconds());
+
+    expect(getSecondsTomorow(date)).toBe(3600);
+    expect(getSecondsTomorow(new Date(2024, 11, 7, 15))).toBe(32400);
+  });
 });
