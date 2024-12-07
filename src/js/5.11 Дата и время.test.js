@@ -39,8 +39,19 @@ describe("5.11 Дата и время", () => {
 
       return new Date(date - days).getDate();
     }
-    expect(getDateAgo(date,1)).toBe(1)
-    expect(getDateAgo(date,2)).toBe(31)
-    expect(getDateAgo(date,365)).toBe(2)
+    expect(getDateAgo(date, 1)).toBe(1);
+    expect(getDateAgo(date, 2)).toBe(31);
+    expect(getDateAgo(date, 365)).toBe(2);
+  });
+
+  test("Задание 5, Последнее число месяца?", () => {
+    function getLastDayOfMonth(year, month) {
+      let date = new Date(year, month + 1);
+      date.setDate(0);
+      return date.getDate();
+    }
+    expect(getLastDayOfMonth(2012, 1)).toBe(29);
+    expect(getLastDayOfMonth(2024, 10)).toBe(30);
+    expect(getLastDayOfMonth(2024, 11)).toBe(31);
   });
 });
