@@ -42,7 +42,7 @@ describe("5.2 Числа", () => {
   });
 
   test("Задание 5, Случайное целое число от min до max", () => {
-    const random = (a,b) => Math.round(a + Math.random() * (b-a) );
+    const random = (a, b) => Math.round(a + Math.random() * (b - a));
     let randomResult = Math.round(1 + 0.123456789 * (5 - 1));
     jest.spyOn(global.Math, "random").mockReturnValue(0.123456789);
     expect(random(1, 5)).toBe(randomResult);
@@ -51,5 +51,4 @@ describe("5.2 Числа", () => {
     jest.spyOn(global.Math, "random").mockReturnValue(0.823093696478205);
     expect(random(1, 5)).toBe(randomResult);
   });
-  
 });
