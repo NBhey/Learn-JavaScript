@@ -54,4 +54,13 @@ describe("5.11 Дата и время", () => {
     expect(getLastDayOfMonth(2024, 10)).toBe(30);
     expect(getLastDayOfMonth(2024, 11)).toBe(31);
   });
+
+  test("Задание 6, сколько сегодня прошло секунд", () => {
+    let date = new Date(2024, 11, 7, 10);
+    const getSecondsToday = (date) =>
+      date.getHours() * 3600 + date.getMinutes() * 60 + date.getSeconds();
+    expect(getSecondsToday(date)).toBe(36000);
+
+    expect(getSecondsToday(new Date(2024, 11, 7, 15))).toBe(54000);
+  });
 });
