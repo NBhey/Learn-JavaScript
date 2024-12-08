@@ -79,7 +79,10 @@ describe("5.11 Дата и время", () => {
     function formatDate(date) {
       date = new Date() - date;
       if (date < 1000) return "прямо сейчас";
+      let minute = date/60000;
+      if(minute < 30_000/60) return "30 сек. назад"
     }
     expect(formatDate(new Date(new Date() - 1))).toBe("прямо сейчас");
+    expect(formatDate(new Date(new Date() - 30 * 1000))).toBe("30 сек. назад");
   });
 });
