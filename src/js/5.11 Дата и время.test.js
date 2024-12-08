@@ -77,12 +77,35 @@ describe("5.11 Дата и время", () => {
 
   test("Задание 8, форматирование относительной даты", () => {
     function formatDate(date) {
-      date = new Date() - date;
-      if (date < 1000) return "прямо сейчас";
-      let minute = date/60000;
-      if(minute < 30_000/60) return "30 сек. назад"
+      let date2 = new Date() - date;
+      let minute = date2 / 60_000;
+      let hours = date2 / 3_600_000;
+      if (date2 < 1000) {
+        return "прямо сейчас";
+      } else if (minute < 1) {
+        return "30 сек. назад";
+      } else if (hours < 1) {
+        return `${minute} мин. назад`;
+      } else {
+        let d = date;
+        
+        d = [
+          "0" + d.getDate(),
+          "0" + (d.getMonth() + 1),
+          "" + d.getFullYear(),
+          "0" + d.getHours(),
+          "0" + d.getMinutes(),
+        ].map((component) => component.slice(-2));
+        return d.slice(0, 3).join('.') + ', ' + d.slice(3).join(':');
+      }
     }
     expect(formatDate(new Date(new Date() - 1))).toBe("прямо сейчас");
     expect(formatDate(new Date(new Date() - 30 * 1000))).toBe("30 сек. назад");
+    expect(formatDate(new Date(new Date() - 5 * 60 * 1000))).toBe(
+      "5 мин. назад"
+    );
+    expect(formatDate(new Date(new Date() - 86400 * 1000))).toBe(
+      "07.12.24, 18:00"
+    );
   });
 });
