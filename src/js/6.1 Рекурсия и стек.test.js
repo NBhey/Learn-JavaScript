@@ -25,5 +25,14 @@ describe("6.1 Рекурсия и стек", () => {
     expect(sumTo2(3)).toBe(6);
     expect(sumTo2(4)).toBe(10);
     expect(sumTo2(100)).toBe(5050);
+
+    function sumTo3(n) {
+      return n * (n + 1) / 2;
+    }
+    expect(sumTo3(1)).toBe(1);
+    expect(sumTo3(2)).toBe(3);
+    expect(sumTo3(3)).toBe(6);
+    expect(sumTo3(4)).toBe(10);
+    expect(sumTo3(100)).toBe(5050);
   });
 });
