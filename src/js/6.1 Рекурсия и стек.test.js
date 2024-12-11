@@ -58,4 +58,20 @@ describe("6.1 Рекурсия и стек", () => {
     expect(factorial2(4)).toBe(24);
     expect(factorial2(5)).toBe(120);
   });
+
+  test("Задание 3, Числа Фибоначчи", () => {
+    function fib(n) {
+      let fibArr = [0, 1];
+      for (let i = 1; i <= n; i += 1) {
+          fibArr.push(fibArr[i] + fibArr[i - 1]);
+      }
+
+      return fibArr[n]
+    }
+    expect(fib(2)).toBe(1)
+    expect(fib(3)).toBe(2)
+    expect(fib(7)).toBe(13)
+    expect(fib(77)).toBe(5527939700884757)
+    expect(fib(6)).toBe(8)
+  });
 });
