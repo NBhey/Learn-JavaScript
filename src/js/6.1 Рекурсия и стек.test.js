@@ -42,10 +42,20 @@ describe("6.1 Рекурсия и стек", () => {
       for (let i = 1; i <= n; i += 1) {
         result *= i;
       }
-      return result
+      return result;
     }
     expect(factorial(1)).toBe(1);
     expect(factorial(4)).toBe(24);
     expect(factorial(5)).toBe(120);
+
+    function factorial2(n) {
+      if (n === 1) {
+        return n;
+      }
+      return n * factorial2(n - 1);
+    }
+    expect(factorial2(1)).toBe(1);
+    expect(factorial2(4)).toBe(24);
+    expect(factorial2(5)).toBe(120);
   });
 });
