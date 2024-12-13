@@ -120,4 +120,32 @@ describe("6.1 Рекурсия и стек", () => {
     expect(logSpy).toHaveBeenCalledWith(3);
     expect(logSpy).toHaveBeenCalledWith(4);
   });
+
+  test("Задание 5, Вывод односвязанного списка в обратном порядке", () => {
+    const logSpy = jest.spyOn(global.console, "log");
+    let list = {
+      value: 1,
+      next: {
+        value: 2,
+        next: {
+          value: 3,
+          next: {
+            value: 4,
+            next: null,
+          },
+        },
+      },
+    };
+    function printList(list) {
+      if (list.next) {
+        printList(list.next);
+      }
+      console.log(list.value);
+    }
+    printList(list);
+    expect(logSpy).toHaveBeenCalledWith(4);
+    expect(logSpy).toHaveBeenCalledWith(3);
+    expect(logSpy).toHaveBeenCalledWith(2);
+    expect(logSpy).toHaveBeenCalledWith(1);
+  });
 });
