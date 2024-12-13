@@ -100,12 +100,24 @@ describe("6.1 Рекурсия и стек", () => {
         objectValue = objectValue.next;
       }
     }
-    printList(list)
+    printList(list);
 
-    expect(logSpy).toHaveBeenCalledWith(1)
-    expect(logSpy).toHaveBeenCalledWith(2)
-    expect(logSpy).toHaveBeenCalledWith(3)
-    expect(logSpy).toHaveBeenCalledWith(4)
+    expect(logSpy).toHaveBeenCalledWith(1);
+    expect(logSpy).toHaveBeenCalledWith(2);
+    expect(logSpy).toHaveBeenCalledWith(3);
+    expect(logSpy).toHaveBeenCalledWith(4);
 
+    function printList2(list) {
+      console.log(list.value);
+
+      if (list.next) {
+        printList2(list.next);
+      }
+    }
+    printList2(list);
+    expect(logSpy).toHaveBeenCalledWith(1);
+    expect(logSpy).toHaveBeenCalledWith(2);
+    expect(logSpy).toHaveBeenCalledWith(3);
+    expect(logSpy).toHaveBeenCalledWith(4);
   });
 });
