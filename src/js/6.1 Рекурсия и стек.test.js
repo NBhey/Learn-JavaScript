@@ -147,5 +147,27 @@ describe("6.1 Рекурсия и стек", () => {
     expect(logSpy).toHaveBeenCalledWith(3);
     expect(logSpy).toHaveBeenCalledWith(2);
     expect(logSpy).toHaveBeenCalledWith(1);
+
+
+
+    function printList2(list) {
+      let objectValue = list;
+      const arr = [];
+      while (objectValue) {
+        arr.push(objectValue.value);
+        objectValue = objectValue.next;
+      }
+  
+      for (let i = arr.length - 1; i >= 0; i -= 1) {
+        console.log(arr[i]);
+      }
+    }
+    printList2(list);
+    expect(logSpy).toHaveBeenCalledWith(4);
+    expect(logSpy).toHaveBeenCalledWith(3);
+    expect(logSpy).toHaveBeenCalledWith(2);
+    expect(logSpy).toHaveBeenCalledWith(1);
   });
+
+  
 });
