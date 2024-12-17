@@ -26,15 +26,15 @@ describe("6.3 Область видимости переменных, замык
     expect(logSpy).toHaveBeenCalledWith("Pete");
   });
 
-  test('Задание 3, Независимы ли счетчики', ()=>{
+  test("Задание 3, Независимы ли счетчики", () => {
     function makeCounter() {
       let count = 0;
-    
-      return function() {
+
+      return function () {
         return count++;
       };
     }
-    
+
     let counter = makeCounter();
     let counter2 = makeCounter();
 
@@ -42,5 +42,23 @@ describe("6.3 Область видимости переменных, замык
     expect(counter()).toBe(1);
     expect(counter2()).toBe(0);
     expect(counter2()).toBe(1);
-  })
+  });
+
+  test("Задание 4, Объект счетчика", () => {
+    function Counter() {
+      let count = 0;
+
+      this.up = function () {
+        return ++count;
+      };
+      this.down = function () {
+        return --count;
+      };
+    }
+
+    let counter = new Counter();
+    expect(counter.up()).toBe(1);
+    expect(counter.up()).toBe(2);
+    expect(counter.down()).toBe(1);
+  });
 });
