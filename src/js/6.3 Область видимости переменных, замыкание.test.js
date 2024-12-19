@@ -61,4 +61,18 @@ describe("6.3 Область видимости переменных, замык
     expect(counter.up()).toBe(2);
     expect(counter.down()).toBe(1);
   });
+
+  test.skip("Задание 5, Функция внутри if", () => {
+    "use strict";
+    let phrase = "Hello";
+
+    if (true) {
+      let user = "John";
+
+      function sayHi() {
+        return `${phrase}, ${user}`;
+      }
+    }
+    sayHi();
+  });
 });
