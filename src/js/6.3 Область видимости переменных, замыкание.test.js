@@ -82,6 +82,19 @@ describe("6.3 Область видимости переменных, замык
         return `${phrase}, ${user}`;
       }
     }
+    // не увидит т.к. функция нраходится в скоупе (блоке кода)
     sayHi();
   });
+
+  test("Задание 6, сумма с помощью замыканий", ()=>{
+    function sum(a){
+      if(a == undefined) return
+
+      return function(b){
+        return a + b
+      }
+    }
+    expect(sum(1)(2)).toBe(3)
+    expect(sum(5)(-1)).toBe(4)
+  })
 });
