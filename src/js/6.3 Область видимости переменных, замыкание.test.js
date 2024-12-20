@@ -24,6 +24,15 @@ describe("6.3 Область видимости переменных, замык
     // вызываем её
     work(); // что будет показано?
     expect(logSpy).toHaveBeenCalledWith("Pete");
+
+    function makeWorker2() {
+      return function () {
+        console.log(name);
+      };
+    }
+    work = makeWorker2();
+    work();
+    expect(logSpy).toHaveBeenCalledWith("John");
   });
 
   test("Задание 3, Независимы ли счетчики", () => {
