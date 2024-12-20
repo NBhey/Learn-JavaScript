@@ -5,4 +5,15 @@ describe("6.2 Остаточные параметры и оператор рас
     }
     expect(sum(1, 2, 3, 4, 5)).toBe(3);
   });
+
+  test("Самостоятельная работа, задание 2", () => {
+    function sumAll(...args) { // args — имя массива
+        let sum = 0;
+      
+        for (let arg of args) sum += arg;
+      
+        return sum;
+      }
+    expect(sumAll(1, 2, 3, 4, 5)).toBe(15);
+  });
 });
