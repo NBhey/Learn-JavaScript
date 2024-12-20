@@ -86,15 +86,27 @@ describe("6.3 Область видимости переменных, замык
     sayHi();
   });
 
-  test("Задание 6, сумма с помощью замыканий", ()=>{
-    function sum(a){
-      if(a == undefined) return
+  test("Задание 6, сумма с помощью замыканий", () => {
+    function sum(a) {
+      if (a == undefined) return;
 
-      return function(b){
-        return a + b
-      }
+      return function (b) {
+        return a + b;
+      };
     }
-    expect(sum(1)(2)).toBe(3)
-    expect(sum(5)(-1)).toBe(4)
-  })
+    expect(sum(1)(2)).toBe(3);
+    expect(sum(5)(-1)).toBe(4);
+  });
+
+  test("Задание 7, Видна ли переменна?", () => {
+    let x = 1;
+    function func() {
+      console.log(x); // ?
+
+      let x = 2;
+    }
+    // нет, т.к. в func создает свое окружение и в этом окружение есть переменная х, но проблема в том, что она инициализируется после 
+    // того как мы вызвали функцию консоль со значением данной переменной
+    func();
+  });
 });
