@@ -117,5 +117,15 @@ describe("6.3 Область видимости переменных, замык
       }
     }
     expect(arr.filter(inBetween(3, 6))).toEqual([3,4,5,6])
+
+    function inArray(array){
+      return function(x){
+        if (array.includes(x)){
+          return x
+        }
+      }
+    }
+
+    expect(arr.filter(inArray([1, 2, 10]))).toEqual([1,2])
   })
 });
