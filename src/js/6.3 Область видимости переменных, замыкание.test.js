@@ -104,28 +104,54 @@ describe("6.3 Область видимости переменных, замык
       console.log(x); // ?
       let x = 2;
     }
-    // нет, т.к. в func создает свое окружение и в этом окружение есть переменная х, но проблема в том, что она инициализируется после 
+    // нет, т.к. в func создает свое окружение и в этом окружение есть переменная х, но проблема в том, что она инициализируется после
     // того как мы вызвали функцию консоль со значением данной переменной
     func();
   });
 
-  test("Задание 8, Фильтрация с помощью функции", ()=>{
-    let arr = [1,2,3,4,5,6,7]
-    function inBetween(a,b){
-      return function(x){
-        return a <= x && b >= x
-      }
+  test("Задание 8, Фильтрация с помощью функции", () => {
+    let arr = [1, 2, 3, 4, 5, 6, 7];
+    function inBetween(a, b) {
+      return function (x) {
+        return a <= x && b >= x;
+      };
     }
-    expect(arr.filter(inBetween(3, 6))).toEqual([3,4,5,6])
+    expect(arr.filter(inBetween(3, 6))).toEqual([3, 4, 5, 6]);
 
-    function inArray(array){
-      return function(x){
-        if (array.includes(x)){
-          return x
+    function inArray(array) {
+      return function (x) {
+        if (array.includes(x)) {
+          return x;
         }
-      }
+      };
     }
 
-    expect(arr.filter(inArray([1, 2, 10]))).toEqual([1,2])
-  })
+    expect(arr.filter(inArray([1, 2, 10]))).toEqual([1, 2]);
+  });
+
+  test("Задание 9, Сортировать по полю", () => {
+    let users = [
+      { name: "Иван", age: 20, surname: "Иванов" },
+      { name: "Пётр", age: 18, surname: "Петров" },
+      { name: "Анна", age: 19, surname: "Каренина" },
+    ];
+
+    function byField(fieldName) {
+      return function (a, b) {
+        return a[fieldName] > b[fieldName] ? 1 : -1;
+      };
+    }
+
+    expect(users.sort(byField("name"))).toEqual([
+      { name: "Анна", age: 19, surname: "Каренина" },
+      { name: "Иван", age: 20, surname: "Иванов" },
+      { name: "Пётр", age: 18, surname: "Петров" }      
+    ]);
+
+    expect(users.sort(byField("age"))).toEqual([
+      { name: "Пётр", age: 18, surname: "Петров" },  
+      { name: "Анна", age: 19, surname: "Каренина" },
+      { name: "Иван", age: 20, surname: "Иванов" },    
+    ]);
+  });
 });
