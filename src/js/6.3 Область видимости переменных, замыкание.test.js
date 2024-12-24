@@ -145,13 +145,40 @@ describe("6.3 Область видимости переменных, замык
     expect(users.sort(byField("name"))).toEqual([
       { name: "Анна", age: 19, surname: "Каренина" },
       { name: "Иван", age: 20, surname: "Иванов" },
-      { name: "Пётр", age: 18, surname: "Петров" }      
+      { name: "Пётр", age: 18, surname: "Петров" },
     ]);
 
     expect(users.sort(byField("age"))).toEqual([
-      { name: "Пётр", age: 18, surname: "Петров" },  
+      { name: "Пётр", age: 18, surname: "Петров" },
       { name: "Анна", age: 19, surname: "Каренина" },
-      { name: "Иван", age: 20, surname: "Иванов" },    
+      { name: "Иван", age: 20, surname: "Иванов" },
     ]);
+  });
+
+  test("Задание 10, Армия функций", () => {
+    // Необходимо починить код
+    function makeArmy() {
+      let shooters = [];
+
+      let i = 0;
+      while (i < 10) {
+        let j = i;
+        let shooter = function () {
+          // функция shooter
+          return j; // должна выводить порядковый номер
+        };
+        shooters.push(shooter); // и добавлять стрелка в массив
+        i++;
+      }
+
+      // ...а в конце вернуть массив из всех стрелков
+      return shooters;
+    }
+
+    let army = makeArmy();
+    expect(army[0]()).toBe(0);
+    expect(army[1]()).toBe(1);
+    expect(army[2]()).toBe(2);
+    expect(army[9]()).toBe(9);
   });
 });
