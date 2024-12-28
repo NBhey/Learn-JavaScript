@@ -31,4 +31,15 @@ describe("6.2 Остаточные параметры и оператор рас
     expect(logSpy).toHaveBeenCalledWith(3);
     expect(logSpy).toHaveBeenCalledWith(2);
   });
+
+  test("Самостоятельная работа, задание 4", () => {
+    let arr1 = [1, -2, 3, 4];
+    let arr2 = [8, 3, -8, 1];
+
+    expect(Math.max(...arr1, ...arr2)).toBe(8)
+    expect(Math.max(...arr1, ...arr2, 25)).toBe(25)
+    arr1 = [3, 5, 1];
+    arr2 = [8, 9, 15];
+    expect([0, ...arr1, 2, ...arr2]).toEqual([0,3,5,1,2,8,9,15])
+  });
 });
