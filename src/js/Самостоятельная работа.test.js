@@ -323,4 +323,41 @@ describe("Самостоятельная работа", () => {
 
     expect(sumSalaries(salaries)).toBe(650);
   });
+
+  test("Учусь понимать функции с каррированием", () => {
+    function curry(f) {
+      return function (a) {
+        return function (b) {
+          return f(a, b);
+        };
+      };
+    }
+    function sum(a, b) {
+      return a + b;
+    }
+
+    expect(curry(sum)(1)(2)).toBe(3);
+
+    // Напиши функцию sum, которая пройдет такой тест:
+    // sum(1) = function;
+    // sum(1)(2) = function;
+    // sum(1)(2)() = 3;
+    // sum(1)(2)(3) = function
+    // sum(1)(2)(3)() = 6;
+    function myCurry(a) {
+      let count = a 
+      function f(b){
+        if (b === undefined){ return count}
+        count += b
+        return f
+      }
+      return f
+    }
+    expect(myCurry(1)).toBeInstanceOf(Function)
+    expect(myCurry(1)(2)()).toBe(3)
+    expect(myCurry(1)(2)(3)).toBeInstanceOf(Function)
+    expect(myCurry(1)(2)(3)()).toBe(6)
+  });
+
+  
 });
