@@ -345,19 +345,34 @@ describe("Самостоятельная работа", () => {
     // sum(1)(2)(3) = function
     // sum(1)(2)(3)() = 6;
     function myCurry(a) {
-      let count = a 
-      function f(b){
-        if (b === undefined){ return count}
-        count += b
-        return f
+      let count = a;
+      function f(b) {
+        if (b === undefined) {
+          return count;
+        }
+        count += b;
+        return f;
       }
-      return f
+      return f;
     }
-    expect(myCurry(1)).toBeInstanceOf(Function)
-    expect(myCurry(1)(2)()).toBe(3)
-    expect(myCurry(1)(2)(3)).toBeInstanceOf(Function)
-    expect(myCurry(1)(2)(3)()).toBe(6)
+    expect(myCurry(1)).toBeInstanceOf(Function);
+    expect(myCurry(1)(2)()).toBe(3);
+    expect(myCurry(1)(2)(3)).toBeInstanceOf(Function);
+    expect(myCurry(1)(2)(3)()).toBe(6);
   });
 
-  
+  test("Разбираюсь в алгоритме бинарного поиска", () => {
+    const arr = [1, 2, 3, 4, 5, 6, 7, 8];
+    // Есть ли конкретный элемент в этом массиве
+    function searchElement(arr, el) {
+      for (let i = 0; i < arr.length; i += 1) {
+        if (arr[i] === el) {
+          return true;
+        }
+      }
+      return false;
+    }
+    expect(searchElement(arr, 7)).toBeTruthy();
+    expect(searchElement(arr, 10)).toBeFalsy();
+  });
 });
