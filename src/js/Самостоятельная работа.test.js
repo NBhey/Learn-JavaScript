@@ -361,7 +361,7 @@ describe("Самостоятельная работа", () => {
     expect(myCurry(1)(2)(3)()).toBe(6);
   });
 
-  test("Разбираюсь в алгоритме бинарного поиска", () => {
+  test("Разбираюсь в алгоритме бинарного поиска,оценка сложности операции", () => {
     const arr = [1, 2, 3, 4, 5, 6, 7, 8];
     // Есть ли конкретный элемент в этом массиве
     function searchElement(arr, el) {
@@ -374,5 +374,13 @@ describe("Самостоятельная работа", () => {
     }
     expect(searchElement(arr, 7)).toBeTruthy();
     expect(searchElement(arr, 10)).toBeFalsy();
+
+    const arr2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    // Делим массив пополам
+    function binSearch(arr, el) {
+      let min = -1;
+      let max = arr.length/2;
+      
+    }
   });
 });
