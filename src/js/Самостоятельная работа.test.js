@@ -379,8 +379,22 @@ describe("Самостоятельная работа", () => {
     // Делим массив пополам
     function binSearch(arr, el) {
       let min = -1;
-      let max = arr.length/2;
-      
+      let max = arr.length;
+      while (max - min > 1) {
+        const between = Math.floor((max + min) / 2);
+        if (arr[between] === el) {
+          return true;
+        }
+        if (arr[between] > el) {
+          max = between;
+        } else if (arr[between] < el) {
+          min = between;
+        }
+      }
+      return false
     }
+    expect(binSearch(arr2, 7)).toBeTruthy();
+    expect(binSearch(arr2, 10)).toBeTruthy();
+    expect(binSearch(arr2, 11)).toBeFalsy();
   });
 });
