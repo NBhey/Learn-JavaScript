@@ -4,5 +4,10 @@ describe("6.4 Устарвешее ключевое слово var", () => {
       var test = 1;
     }
     expect(test).toBe(1);
+
+    if (true) {
+      let test2 = 4;
+      expect(test2).toBe(4);
+    }
   });
 });
