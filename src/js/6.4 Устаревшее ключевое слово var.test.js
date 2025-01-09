@@ -29,7 +29,6 @@ describe("6.4 Устарвешее ключевое слово var", () => {
       if (false) {
         var phrase;
       }
-      
     }
     test2();
     expect(logSpy).toHaveBeenCalledWith("пока");
