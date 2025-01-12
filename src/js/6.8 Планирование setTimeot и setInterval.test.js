@@ -1,6 +1,6 @@
 jest.useFakeTimers();
 describe("6.8 Планирование setTimeot и setInterval,Вывод каждую секунду", () => {
-  test("задание 1", () => {
+  test("Задание 1, Вывод каждую секунду", () => {
     let logSpy = jest.spyOn(window.console, "log");
     function printNumbers(from, to) {
       let time = setInterval(() => {
@@ -38,4 +38,13 @@ describe("6.8 Планирование setTimeot и setInterval,Вывод ка�
     expect(logSpy).toHaveBeenCalledWith(93);
     expect(logSpy).toHaveBeenCalledWith(94);
   });
+
+  test.skip('6.8 Планирование setTimeout и setInterval, задание 1, вариант три', ()=>{
+    function printNumbers3(to,from){
+      setTimeout(function f(){
+        console.log(to++);
+
+      },1000)
+    }
+  })
 });
