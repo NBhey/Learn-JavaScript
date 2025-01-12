@@ -1,5 +1,5 @@
 jest.useFakeTimers();
-describe("6.8 Планирование setTimeot и setInterval", () => {
+describe("6.8 Планирование setTimeot и setInterval,Вывод каждую секунду", () => {
   test("задание 1", () => {
     let logSpy = jest.spyOn(window.console, "log");
     function printNumbers(from, to) {
@@ -20,5 +20,22 @@ describe("6.8 Планирование setTimeot и setInterval", () => {
     expect(logSpy).toHaveBeenCalledWith(4);
     expect(logSpy).toHaveBeenCalledWith(5);
     expect(logSpy).toHaveBeenCalledWith("setInterval отработал");
+
+    function printNumbers2(from, to) {
+      let timer = setInterval(() => {
+        console.log(from);
+        if (from === to) {
+          clearInterval(timer);
+        }
+        from++;
+      }, 1000);
+    }
+    printNumbers2(90, 95);
+    jest.advanceTimersByTime(20000);
+    expect(logSpy).toHaveBeenCalledWith(90);
+    expect(logSpy).toHaveBeenCalledWith(91);
+    expect(logSpy).toHaveBeenCalledWith(92);
+    expect(logSpy).toHaveBeenCalledWith(93);
+    expect(logSpy).toHaveBeenCalledWith(94);
   });
 });
