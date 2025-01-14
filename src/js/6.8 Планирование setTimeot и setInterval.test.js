@@ -39,24 +39,39 @@ describe("6.8 Планирование setTimeout и setInterval,Вывод ка
     expect(logSpy).toHaveBeenCalledWith(94);
   });
 
-  test.skip("6.8 Планирование setTimeout и setInterval, задание 1, вариант три", () => {
+  test("6.8 Планирование setTimeout и setInterval, задание 1, вариант три", () => {
+    let logSpy = jest.spyOn(window.console, "log");
     function printNumbers3(to, from) {
       setTimeout(function f() {
-        console.log(to++);
+        console.log(to);
+        if (to == from) {
+          console.log("я закончил");
+          return;
+        }
+        to += 1;
+        printNumbers3(to, from);
       }, 1000);
     }
+    printNumbers3(80, 85);
+    jest.advanceTimersByTime(20000);
+    expect(logSpy).toHaveBeenCalledWith(80);
+    expect(logSpy).toHaveBeenCalledWith(81);
+    expect(logSpy).toHaveBeenCalledWith(82);
+    expect(logSpy).toHaveBeenCalledWith(83);
+    expect(logSpy).toHaveBeenCalledWith(84);
+    expect(logSpy).toHaveBeenCalledWith(85);
   });
 
   test("Задание 2,что покажет setTimeout", () => {
-    let logSpy = jest.spyOn(window.console, 'log')
+    let logSpy = jest.spyOn(window.console, "log");
     let i = 0;
 
     setTimeout(() => console.log(i), 100); // ?
-    // предположим, что время выполнения этой функции >100 мс
+
     for (let j = 0; j < 1000; j++) {
       i++;
     }
     jest.advanceTimersByTime(200);
-    expect(logSpy).toHaveBeenCalledWith(1000)
+    expect(logSpy).toHaveBeenCalledWith(1000);
   });
 });
