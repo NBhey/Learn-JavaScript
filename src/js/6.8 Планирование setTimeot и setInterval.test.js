@@ -66,7 +66,7 @@ describe("6.8 Планирование setTimeout и setInterval,Вывод ка
     let logSpy = jest.spyOn(window.console, "log");
     let i = 0;
 
-    setTimeout(() => console.log(i), 100); // ?
+    setTimeout(() => console.log(i), 100); 
 
     for (let j = 0; j < 1000; j++) {
       i++;

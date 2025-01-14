@@ -1,5 +1,5 @@
 describe("Самостоятельная работа CodeWars", () => {
-  test.skip('Counting Duplicates Across Multiple Lists', ()=>{
+  test('Counting Duplicates Across Multiple Lists', ()=>{
     const countDuplicates = (name, age, height) => {
         let count = 0;
         let arr = []
@@ -12,6 +12,8 @@ describe("Самостоятельная работа CodeWars", () => {
         return count
       }
       
+      expect(countDuplicates(['John','Beth','Beth','Bill'],[37,23,30,46],[183,170,165,175])).toBe(0)
+
   })
   });
   
