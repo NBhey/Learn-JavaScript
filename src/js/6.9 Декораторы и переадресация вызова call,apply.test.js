@@ -22,4 +22,19 @@ describe("6.9 Декораторы и переадресация вызова ca
     expect(logSpy).toHaveBeenCalledWith("call:1,2");
     expect(logSpy).toHaveBeenCalledWith("call:4,5");
   });
+
+  test.skip('Задание 2, Задерживающий декоратор', ()=>{
+    function f(x){
+      console.log(x)
+    }
+
+    function delay(func,time){
+       setTimeout(func,time)
+    }
+
+    let f1000 = delay(f, 1000);
+
+
+    f1000("test")
+  })
 });

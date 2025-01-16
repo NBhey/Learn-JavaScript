@@ -391,10 +391,40 @@ describe("Самостоятельная работа", () => {
           min = between;
         }
       }
-      return false
+      return false;
     }
     expect(binSearch(arr2, 7)).toBeTruthy();
     expect(binSearch(arr2, 10)).toBeTruthy();
     expect(binSearch(arr2, 11)).toBeFalsy();
+  });
+
+  test("Разбираюсь с декораторами и переадресацией вызова", () => {
+    let logSpy = jest.spyOn(window.console, "log")
+    function slow(x) {
+      console.log(`Called with ${x}`);
+      return x;
+    }
+
+    function cachingDecorator(func) {
+      let cache = new Map(); //создаю коллекцию ключ/зачение, см. главу 5.7 Map и Set
+
+      return function (x) {
+        if (cache.has(x)) {
+          //проверяю есть ли данный ключ в коллекции
+          return cache.get(x); //если есть то получаю результат
+        }
+
+        // а иначе
+
+        let result = func(x); // вызываем функцию из аргумента
+
+        cache.set(x, result); // здесь х является ключом, а результат это результат из функции в данном примере из slow, set добавляет в коллекцию (ключ, значение)
+        return result;
+      };
+    }
+    slow = cachingDecorator(slow);
+    slow(1)
+    expect(logSpy).toHaveBeenCalledWith(`Called with 1`)
+
   });
 });
