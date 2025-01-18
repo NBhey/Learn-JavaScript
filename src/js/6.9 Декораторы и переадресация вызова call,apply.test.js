@@ -1,3 +1,4 @@
+jest.useFakeTimers();
 describe("6.9 Декораторы и переадресация вызова call,apply", () => {
   test("Задание 1, декоратор шпион", () => {
     function work(a, b) {
@@ -23,18 +24,22 @@ describe("6.9 Декораторы и переадресация вызова ca
     expect(logSpy).toHaveBeenCalledWith("call:4,5");
   });
 
-  test.skip('Задание 2, Задерживающий декоратор', ()=>{
-    function f(x){
-      console.log(x)
+  test("Задание 2, Задерживающий декоратор", () => {
+    let logSpy = jest.spyOn(window.console, "log");
+    function f(x) {
+      console.log(x);
     }
 
-    function delay(func,time){
-       setTimeout(func,time)
+    function delay(func, time) {
+      return function () {
+        setTimeout(() => func.apply(this, arguments), time);
+      };
     }
 
     let f1000 = delay(f, 1000);
 
-
-    f1000("test")
-  })
+    f1000("test");
+    jest.advanceTimersByTime(20000);
+    expect(logSpy).toHaveBeenCalledWith('test');
+  });
 });
