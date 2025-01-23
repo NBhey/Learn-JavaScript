@@ -399,7 +399,7 @@ describe("Самостоятельная работа", () => {
   });
 
   test("Разбираюсь с декораторами и переадресацией вызова", () => {
-    let logSpy = jest.spyOn(window.console, "log")
+    let logSpy = jest.spyOn(window.console, "log");
     function slow(x) {
       console.log(`Called with ${x}`);
       return x;
@@ -423,19 +423,47 @@ describe("Самостоятельная работа", () => {
       };
     }
     slow = cachingDecorator(slow);
-    slow(1)
-    expect(logSpy).toHaveBeenCalledWith(`Called with 1`)
-
+    slow(1);
+    expect(logSpy).toHaveBeenCalledWith(`Called with 1`);
   });
 
-  test('Разбираю области видимости, замыкани', ()=>{
-    let logSpy = jest.spyOn(window.console, 'log')
-    let a = 20 
+  test("Разбираю области видимости, замыкание", () => {
+    let logSpy = jest.spyOn(window.console, "log");
+    let a = 20;
 
-    {a = 10 }
+    {
+      a = 10;
+    }
 
+    console.log(a);
+
+    expect(logSpy).toHaveBeenCalledWith(10);
+
+    function changeA() {
+      a = 3;
+    }
+
+    changeA();
+    console.log(a);
+    expect(logSpy).toHaveBeenCalledWith(3);
+
+    function changeB() {
+      function changeC() {
+        a = 156;
+      }
+      changeC();
+    }
+    changeB();
+    console.log(a);
+    expect(logSpy).toHaveBeenCalledWith(156);
+
+    function changeD(){
+      let a = 1243
+      
+    }
+    changeD()
     console.log(a)
+    expect(logSpy).toHaveBeenCalledWith(156);
 
-    expect(logSpy).toHaveBeenCalledWith(10)
-  })
+  });
 });
