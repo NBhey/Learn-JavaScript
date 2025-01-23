@@ -457,13 +457,13 @@ describe("Самостоятельная работа", () => {
     console.log(a);
     expect(logSpy).toHaveBeenCalledWith(156);
 
-    function changeD(){
-      let a = 1243
-      
+    function changeD() {
+      let a = 1243;
     }
-    changeD()
-    console.log(a)
-    expect(logSpy).toHaveBeenCalledWith(156);
-
+    changeD();
+    console.log(a);
+    a = 1
+    console.log(a);
+    expect(logSpy).toHaveBeenCalledWith(1);
   });
 });
