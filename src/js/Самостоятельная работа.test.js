@@ -462,7 +462,8 @@ describe("Самостоятельная работа", () => {
     }
     changeD();
     console.log(a);
-    a = 1
+    expect(logSpy).toHaveBeenCalledWith(156);
+    a = 1;
     console.log(a);
     expect(logSpy).toHaveBeenCalledWith(1);
   });
