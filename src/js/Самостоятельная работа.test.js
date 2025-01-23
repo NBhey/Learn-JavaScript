@@ -427,4 +427,15 @@ describe("Самостоятельная работа", () => {
     expect(logSpy).toHaveBeenCalledWith(`Called with 1`)
 
   });
+
+  test('Разбираю области видимости, замыкани', ()=>{
+    let logSpy = jest.spyOn(window.console, 'log')
+    let a = 20 
+
+    {a = 10 }
+
+    console.log(a)
+
+    expect(logSpy).toHaveBeenCalledWith(10)
+  })
 });
