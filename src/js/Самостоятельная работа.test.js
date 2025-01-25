@@ -484,5 +484,18 @@ describe("Самостоятельная работа", () => {
     expect(test()).toBe(100);
     console.log(a);
     expect(logSpy).toHaveBeenCalledWith(34);
+
+
+    function test2(a) {
+      plusOne();
+      return a;
+    }
+    expect(test2(a)).toBe(34);
+    console.log(a);
+    expect(logSpy).toHaveBeenCalledWith(35);
+
+    expect(test2(a)).toBe(35);
+    console.log(a);
+    expect(logSpy).toHaveBeenCalledWith(36);
   });
 });
