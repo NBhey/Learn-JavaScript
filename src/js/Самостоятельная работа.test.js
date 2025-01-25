@@ -427,7 +427,7 @@ describe("Самостоятельная работа", () => {
     expect(logSpy).toHaveBeenCalledWith(`Called with 1`);
   });
 
-  test("Разбираю области видимости, замыкание", () => {
+  test("Разбираю области видимости", () => {
     let logSpy = jest.spyOn(window.console, "log");
     let a = 20;
 
@@ -466,5 +466,23 @@ describe("Самостоятельная работа", () => {
     a = 1;
     console.log(a);
     expect(logSpy).toHaveBeenCalledWith(1);
+  });
+
+  test("Разбираю замкание", () => {
+    let logSpy = jest.spyOn(window.console, "log");
+    let a = 0;
+    function plusOne() {
+      a += 1;
+    }
+
+    function test() {
+      let a = 100;
+      plusOne();
+      return a;
+    }
+    a = 33;
+    expect(test()).toBe(100);
+    console.log(a);
+    expect(logSpy).toHaveBeenCalledWith(34);
   });
 });
