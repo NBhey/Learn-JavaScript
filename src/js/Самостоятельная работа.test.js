@@ -485,7 +485,6 @@ describe("Самостоятельная работа", () => {
     console.log(a);
     expect(logSpy).toHaveBeenCalledWith(34);
 
-
     function test2(a) {
       plusOne();
       return a;
@@ -499,23 +498,43 @@ describe("Самостоятельная работа", () => {
     expect(logSpy).toHaveBeenCalledWith(36);
   });
 
-  test('Еще раз замыкание', ()=>{
-    let a = 0
-    function plus(){
-      a +=1
+  test("Еще раз замыкание", () => {
+    let a = 0;
+    function plus() {
+      a += 1;
     }
 
-    function start(){
-      plus()
-      return function b(){
-        plus()
-        return function c(){
-         plus()
+    function start() {
+      plus();
+      return function b() {
+        plus();
+        return function c() {
+          plus();
+        };
+      };
+    }
+    start()()();
+    expect(a).toBe(3);
+  });
+
+  test("И еще замыкание", () => {
+    let logSpy = jest.spyOn(window.console, "log");
+    let a = 0;
+    function start() {
+      return function b() {
+        function plus() {
+          a += 1;
         }
-      }
+        let a = 144;
+        plus();
+        return function c() {
+          plus();
+          console.log(a);
+        };
+      };
     }
-    start()()()
-    expect(a).toBe(3)
-
-  })
+    start()()();
+    expect(a).toBe(0);
+    expect(logSpy).toHaveBeenCalledWith(146)
+  });
 });
