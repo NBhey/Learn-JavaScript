@@ -498,4 +498,24 @@ describe("Самостоятельная работа", () => {
     console.log(a);
     expect(logSpy).toHaveBeenCalledWith(36);
   });
+
+  test('Еще раз замыкание', ()=>{
+    let a = 0
+    function plus(){
+      a +=1
+    }
+
+    function start(){
+      plus()
+      return function b(){
+        plus()
+        return function c(){
+         plus()
+        }
+      }
+    }
+    start()()()
+    expect(a).toBe(3)
+
+  })
 });
