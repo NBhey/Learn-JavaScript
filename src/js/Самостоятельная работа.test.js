@@ -537,4 +537,25 @@ describe("Самостоятельная работа", () => {
     expect(a).toBe(0);
     expect(logSpy).toHaveBeenCalledWith(146)
   });
+
+  test("Угадай что? Правильно, замыкания!", ()=>{
+    let logSpy = jest.spyOn(window.console, "log");
+    let number = 0;
+    expect(number).toBe(0)
+    function start() {
+      return function a() {
+        function plus() {
+          number += 1;
+        }
+        return function c() {
+          let number = 144;
+          plus();
+          plus();
+          console.log(a);
+        };
+      };
+    }
+    start()()()
+    expect(number).toBe(2)
+  })
 });
