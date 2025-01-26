@@ -535,13 +535,13 @@ describe("Самостоятельная работа", () => {
     }
     start()()();
     expect(a).toBe(0);
-    expect(logSpy).toHaveBeenCalledWith(146)
+    expect(logSpy).toHaveBeenCalledWith(146);
   });
 
-  test("Угадай что? Правильно, замыкания!", ()=>{
+  test("Угадай что? Правильно, замыкания!", () => {
     let logSpy = jest.spyOn(window.console, "log");
     let number = 0;
-    expect(number).toBe(0)
+    expect(number).toBe(0);
     function start() {
       return function a() {
         function plus() {
@@ -551,11 +551,37 @@ describe("Самостоятельная работа", () => {
           let number = 144;
           plus();
           plus();
-          console.log(a);
+          console.log(number);
         };
       };
     }
-    start()()()
-    expect(number).toBe(2)
-  })
+    start()()();
+    expect(logSpy).toHaveBeenCalledWith(144);
+    expect(number).toBe(2);
+  });
+
+  test("Замыкания", () => {
+    let logSpy = jest.spyOn(window.console, "log");
+    let number = 0;
+    expect(number).toBe(0);
+    function start() {
+      return function a() {
+        let number = 1440;
+        return function b() {
+          function plus() {
+            number += 1;
+          }
+          plus();
+          return function c() {
+            plus();
+            plus();
+            console.log(number);
+          };
+        };
+      };
+    }
+    start()()()();
+    expect(logSpy).toHaveBeenCalledWith(1443);
+    expect(number).toBe(0);
+  });
 });
