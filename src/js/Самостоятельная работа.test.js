@@ -606,4 +606,22 @@ describe("Самостоятельная работа", () => {
     expect(logSpy).toHaveBeenCalledWith(146);
     expect(number).toBe(146);
   });
+
+  test("Стек вызовов", () => {
+    let logSpy = jest.spyOn(window.console, "log");
+    function first() {
+      console.log('Inside first function');
+      second();
+      console.log('Again inside first function');
+    }
+    function second() {
+      console.log('Inside second function');
+    }
+    first();
+    console.log('Inside Global Execution Context');
+    expect(logSpy).toHaveBeenCalledWith('Inside first function');
+    expect(logSpy).toHaveBeenCalledWith('Inside second function');
+    expect(logSpy).toHaveBeenCalledWith('Again inside first function');
+    expect(logSpy).toHaveBeenCalledWith('Inside Global Execution Context');
+  });
 });
