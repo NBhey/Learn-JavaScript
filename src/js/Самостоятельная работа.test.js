@@ -624,4 +624,16 @@ describe("Самостоятельная работа", () => {
     expect(logSpy).toHaveBeenCalledWith('Again inside first function');
     expect(logSpy).toHaveBeenCalledWith('Inside Global Execution Context');
   });
+
+  test('Разбираю this', ()=>{
+    let logSpy = jest.spyOn(window.console, "log");
+    const obj = {
+      name:'Яша',
+      method(){
+          console.log(this.name);
+      }
+  }
+  obj.method()
+  expect(logSpy).toHaveBeenCalledWith("Яша")
+  })
 });
