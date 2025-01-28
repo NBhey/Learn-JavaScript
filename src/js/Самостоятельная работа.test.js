@@ -632,12 +632,20 @@ describe("Самостоятельная работа", () => {
       method() {
         console.log(this.name);
       },
-      method2(i){
-        return this.name + ' ' + i
+      method2(i) {
+        return this.name + " " + i;
+      },
+      method3() {
+        return this
+      },
+      method4(i) {
+        return this.method2(i)
       }
     };
     obj.method();
     expect(logSpy).toHaveBeenCalledWith("Яша");
-    expect(obj.method2('Олегович')).toBe("Яша Олегович");
+    expect(obj.method2("Олегович")).toBe("Яша Олегович");
+    expect(obj.method3().method2("Попов")).toBe("Яша Попов");
+    expect(obj.method4("Мопсин")).toBe("Яша Мопсин");
   });
 });
