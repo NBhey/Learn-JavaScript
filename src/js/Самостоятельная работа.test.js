@@ -610,30 +610,34 @@ describe("Самостоятельная работа", () => {
   test("Стек вызовов", () => {
     let logSpy = jest.spyOn(window.console, "log");
     function first() {
-      console.log('Inside first function');
+      console.log("Inside first function");
       second();
-      console.log('Again inside first function');
+      console.log("Again inside first function");
     }
     function second() {
-      console.log('Inside second function');
+      console.log("Inside second function");
     }
     first();
-    console.log('Inside Global Execution Context');
-    expect(logSpy).toHaveBeenCalledWith('Inside first function');
-    expect(logSpy).toHaveBeenCalledWith('Inside second function');
-    expect(logSpy).toHaveBeenCalledWith('Again inside first function');
-    expect(logSpy).toHaveBeenCalledWith('Inside Global Execution Context');
+    console.log("Inside Global Execution Context");
+    expect(logSpy).toHaveBeenCalledWith("Inside first function");
+    expect(logSpy).toHaveBeenCalledWith("Inside second function");
+    expect(logSpy).toHaveBeenCalledWith("Again inside first function");
+    expect(logSpy).toHaveBeenCalledWith("Inside Global Execution Context");
   });
 
-  test('Разбираю this', ()=>{
+  test("Разбираю this", () => {
     let logSpy = jest.spyOn(window.console, "log");
     const obj = {
-      name:'Яша',
-      method(){
-          console.log(this.name);
+      name: "Яша",
+      method() {
+        console.log(this.name);
+      },
+      method2(i){
+        return this.name + ' ' + i
       }
-  }
-  obj.method()
-  expect(logSpy).toHaveBeenCalledWith("Яша")
-  })
+    };
+    obj.method();
+    expect(logSpy).toHaveBeenCalledWith("Яша");
+    expect(obj.method2('Олегович')).toBe("Яша Олегович");
+  });
 });
