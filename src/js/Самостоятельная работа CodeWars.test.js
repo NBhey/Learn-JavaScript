@@ -43,4 +43,9 @@ describe("Самостоятельная работа CodeWars", () => {
     expect(nicknameGenerator("Jeannie")).toBe("Jean");
     expect(nicknameGenerator("Robert")).toBe("Rob");
   });
+
+  test("Be Concise I - The Ternary Operator", () => {
+    describeAge = (age) =>  age <= 12 ? "You're a(n) kid" : age <= 17 ? "You're a(n) teenager" : age <= 64 ? "You're a(n) adult" : "You're a(n) elderly"
+    expect(describeAge(12)).toBe("You're a(n) kid");
+  });
 });
