@@ -48,4 +48,13 @@ describe("Самостоятельная работа CodeWars", () => {
     describeAge = (age) =>  age <= 12 ? "You're a(n) kid" : age <= 17 ? "You're a(n) teenager" : age <= 64 ? "You're a(n) adult" : "You're a(n) elderly"
     expect(describeAge(12)).toBe("You're a(n) kid");
   });
+
+  test("No zeros for heroes", () => {
+    function noBoringZeros(n) {
+      while(n%10==0 && n!=0){n/=10;}
+      return n;
+    }
+
+    expect(noBoringZeros(1450)).toBe(145)
+  });
 });
