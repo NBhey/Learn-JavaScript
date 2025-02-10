@@ -58,3 +58,4 @@ describe("Самостоятельная работа CodeWars", () => {
     expect(noBoringZeros(1450)).toBe(145)
   });
 });
+//test
