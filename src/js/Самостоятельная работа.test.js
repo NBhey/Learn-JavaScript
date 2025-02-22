@@ -636,11 +636,11 @@ describe("Самостоятельная работа", () => {
         return this.name + " " + i;
       },
       method3() {
-        return this
+        return this;
       },
       method4(i) {
-        return this.method2(i)
-      }
+        return this.method2(i);
+      },
     };
     obj.method();
     expect(logSpy).toHaveBeenCalledWith("Яша");
@@ -648,6 +648,28 @@ describe("Самостоятельная работа", () => {
     expect(obj.method3().method2("Попов")).toBe("Яша Попов");
     expect(obj.method4("Мопсин")).toBe("Яша Мопсин");
   });
-  test.skip(" Для увиденного задание в ТГ", () => {
+  test("Начальная задача с собеседования", () => {
+    // Найдите недостающий номер в последовательности от 1 до n
+    // Вы получили массив чисел от 1 до n, но одно из чисел потерялось.
+    // Напишите функцию, которая находит недостающее число.
+
+    let input = [3, 7, 1, 2, 8, 4, 5];
+
+    function findMissingNumber(arr) {
+      arr = arr.sort((a, b) => a - b);
+      for (let i = 0; i < arr.length; i += 1) {
+        if (i + 1 == arr[i]) {
+          continue;
+        }
+        return i + 1;
+      }
+    }
+
+    expect(findMissingNumber(input)).toBe(6);
+
+    input = [3, 7, 2, 6, 4, 5];
+    expect(findMissingNumber(input)).toBe(1);
+    input = [3, 7, 2, 6, 4, 5, 1, 9];
+    expect(findMissingNumber(input)).toBe(8);
   });
 });
