@@ -57,4 +57,19 @@ describe("Самостоятельная работа Aston", () => {
     wrap();
     expect(logSpy).toHaveBeenCalledWith(20);
   });
+
+  test("Promise", () => {
+   return Promise.reject("a")
+      .then(
+        (p) => p + "1",
+        (p) => p + "2"
+      )
+      .catch((p) => p + "b")
+      .catch((p) => p + "c")
+      .then((p) => p + "d1")
+      .then("d2")
+      .then((p) => p + "d3")
+      .finally((p) => expect(p).toBe(undefined)) // undefined
+      .then((p) => expect(p).toBe('a2d1d3')); //a2d1d3
+  });
 });
