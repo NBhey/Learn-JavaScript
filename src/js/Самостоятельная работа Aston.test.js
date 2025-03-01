@@ -59,7 +59,7 @@ describe("Самостоятельная работа Aston", () => {
   });
 
   test("Promise", () => {
-   return Promise.reject("a")
+    return Promise.reject("a")
       .then(
         (p) => p + "1",
         (p) => p + "2"
@@ -70,6 +70,31 @@ describe("Самостоятельная работа Aston", () => {
       .then("d2")
       .then((p) => p + "d3")
       .finally((p) => expect(p).toBe(undefined)) // undefined
-      .then((p) => expect(p).toBe('a2d1d3')); //a2d1d3
+      .then((p) => expect(p).toBe("a2d1d3")); //a2d1d3
   });
+
+  test("___", () => {
+    let logSpy = jest.spyOn(global.console, "log");
+    function Hamster() {
+      this.food = []
+    }
+
+    Hamster.prototype.found = function (something) {
+      this.food.push(something);
+    };
+
+    // Создаём двух хомяков и кормим первого
+    let speedy = new Hamster();
+    let lazy = new Hamster();
+
+    speedy.found("яблоко");
+    speedy.found("орех");
+
+    console.log(speedy.food.length); // 2
+    console.log(lazy.food.length); // 2 (!??) // должно быть 0
+    expect(logSpy).toHaveBeenCalledWith(2);
+    expect(logSpy).toHaveBeenCalledWith(0);
+  });
+
+
 });
