@@ -145,7 +145,7 @@ describe("Самостоятельная работа Aston", () => {
     expect(!!"false" == !!"true").toBe(true);
     expect(["x"] == "x").toBe(true);
     expect([] + null + 1).toBe("null1");
-    expect(0 || ("0" && {})).toBe(true);
+    expect(0 || ("0" && {})).toEqual({});
     expect([1, 2, 3] == [1, 2, 3]).toBe(false);
   });
 });
