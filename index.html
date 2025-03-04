@@ -6,7 +6,9 @@
     <title>Learn JavaScript</title>
 </head>
 <body>
-    
+    <div id="block" onclick="alert('Блок clicked!')">
+        <button id="button" onclick="alert('Кнопка clicked!'); event.stopPropagation();">Нажми меня</button>
+      </div>
     <script type="module" src="./src/index.js"></script>
     <script>console.log('привет')</script>
 
