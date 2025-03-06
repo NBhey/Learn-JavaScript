@@ -6,6 +6,20 @@
     <title>Document</title>
 </head>
 <body>
+    <button id="myButton">Click me</button>
+
+<script>
+  const button = document.getElementById("myButton");
+
+  button.addEventListener("click", function(e) {
+
+    console.log(this); // Что будет this?
+  });
+
+  button.addEventListener("click", () => {
+    console.log(this); // А здесь?
+  });
+</script>
     <script type="module" src="./src/index.js"></script>
 
 </body>
