@@ -29,23 +29,38 @@ import firstStep from "./js/2.1 Hello.world.js";
 //   }
 // }
 
-class Animal {
-  static sum(x){
-    return x + x
-  }
-  constructor(name, color) {
-    this.name = name;
-    this.color = color;
-  }
+// class Animal {
+//   static sum(x){
+//     return x + x
+//   }
+//   constructor(name, color) {
+//     this.name = name;
+//     this.color = color;
+//   }
 
-  animalSay() {
-    return `${this.color} ${this.name} говорит`;
-  }
+//   animalSay() {
+//     return `${this.color} ${this.name} говорит`;
+//   }
+// }
+
+// const lion = new Animal("Король", "Золотой");
+// const dog = new Animal("Шарик", "Коричневый");
+// console.log(Animal.sum(4))
+// console.log(lion)
+// console.log(lion.animalSay())
+// console.log(dog.animalSay())
+
+
+function sayHi(name){
+  return `Привет, ${this.name} `
 }
 
-const lion = new Animal("Король", "Золотой");
-const dog = new Animal("Шарик", "Коричневый");
-console.log(Animal.sum(4))
-console.log(lion)
-console.log(lion.animalSay())
-console.log(dog.animalSay())
+const obj = {
+  name:'Петр'
+}
+
+const person1 = sayHi.call(obj)
+console.log(person1)
+
+const funcPerson2 = sayHi.bind(obj,'Паша')
+console.log(funcPerson2())
